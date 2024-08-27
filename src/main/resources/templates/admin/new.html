@@ -66,9 +66,9 @@
                                 <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                                 <br>
                                 <label for="roles"><b>Role</b></label>
-                                <select multiple class="form-control form-control-sm" id="roles" name="role" size="2">
-                                    <option selected="selected" value="user">ROLE_USER</option>
-                                    <option value="admin">ROLE_ADMIN</option>
+                                <select multiple class="form-control form-control-sm" id="roles" name="listRoles" size="2">
+                                    <option selected="selected" value="1">ROLE_USER</option>
+                                    <option value="2">ROLE_ADMIN</option>
                                 </select>
                                 <br>
                                 <button th:type="submit" class="btn btn-success btn-lg" value="Add new user">Add new user

@@ -10,7 +10,6 @@ import ru.kata.spring.boot_security.demo.service.interfaces.RoleService;
 import ru.kata.spring.boot_security.demo.service.interfaces.UserService;
 
 import java.util.Collections;
-import java.util.Set;
 
 @Component
 public class ApplicationRunnerImpl implements ApplicationRunner {
@@ -30,14 +29,14 @@ public class ApplicationRunnerImpl implements ApplicationRunner {
         roleService.addNewRole(new Role(1L, "ROLE_USER"));
         roleService.addNewRole(new Role(2L, "ROLE_ADMIN"));
 
-        User admin = new User("admin", "admin", "admin");
         User user = new User("user", "user", "user");
+        User admin = new User("admin", "admin", "admin");
 
-        admin.setRoles(roleService.getAllRoles());
-        userService.addNewUser(admin);
-
-        user.setRoles(Set.copyOf(Collections.singletonList(roleService.getRoleById(1L))));
+        user.setRoles(roleService.findByIdRoles(Collections.singletonList(1L)));
         userService.addNewUser(user);
+
+        admin.setRoles(roleService.findByIdRoles(Collections.singletonList(2L)));
+        userService.addNewUser(admin);
 
     }
 }

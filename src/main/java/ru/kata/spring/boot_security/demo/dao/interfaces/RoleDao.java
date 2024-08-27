@@ -10,7 +10,5 @@ public interface RoleDao {
 
     void addNewRole(Role role);
 
-    Role getRoleById(Long id);
-
     Set<Role> findByIdRoles(List<Long> roles);
 }
