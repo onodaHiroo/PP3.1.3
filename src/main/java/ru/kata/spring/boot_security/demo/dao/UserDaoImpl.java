@@ -22,20 +22,9 @@ public class UserDaoImpl implements UserDao {
         this.entityManager = entityManager;
     }
 
-
-    @Override
-    public void addNewUser(User user) {
-        entityManager.merge(user);
-    }
-
     @Override
     public List<User> getListOfUsers() {
         return entityManager.createQuery("select u from User u", User.class).getResultList();
-    }
-
-    @Override
-    public void updateUser(User user) {
-        entityManager.merge(user);
     }
 
     @Override
@@ -52,5 +41,10 @@ public class UserDaoImpl implements UserDao {
     public User findByEmail(String email) throws NoResultException {
         return entityManager.createQuery("select u from User u where u.email =: email", User.class)
                 .setParameter("email", email).getSingleResult();
+    }
+
+    @Override
+    public void addOrUpdateUser(User user) {
+        entityManager.merge(user);
     }
 }

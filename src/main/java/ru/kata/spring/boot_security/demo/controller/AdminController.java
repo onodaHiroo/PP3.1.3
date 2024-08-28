@@ -48,7 +48,7 @@ public class AdminController {
     public String create(@ModelAttribute("user") User user,
                          @RequestParam(value = "listRoles") List<Long> roles) {
         user.setRoles(roleService.findByIdRoles(roles));
-        userService.addNewUser(user);
+        userService.addOrUpdateUser(user);
         return "redirect:/admin";
     }
 
@@ -56,7 +56,7 @@ public class AdminController {
     public String edit(@ModelAttribute("user") User user,
                        @RequestParam(value = "listRoles") List<Long> roles) {
         user.setRoles(roleService.findByIdRoles(roles));
-        userService.updateUser(user);
+        userService.addOrUpdateUser(user);
         return "redirect:/admin";
     }
 

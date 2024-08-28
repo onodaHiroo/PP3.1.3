@@ -33,10 +33,10 @@ public class ApplicationRunnerImpl implements ApplicationRunner {
         User admin = new User("admin", "admin", "admin");
 
         user.setRoles(roleService.findByIdRoles(Collections.singletonList(1L)));
-        userService.addNewUser(user);
+        userService.addOrUpdateUser(user);
 
         admin.setRoles(roleService.findByIdRoles(Collections.singletonList(2L)));
-        userService.addNewUser(admin);
+        userService.addOrUpdateUser(admin);
 
     }
 }
